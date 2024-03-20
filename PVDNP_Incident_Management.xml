@@ -7,6 +7,8 @@
     <bpmn:messageFlow id="Flow_0n261y6" name="Подробная информация об инциденте" sourceRef="Participant_01axcw4" targetRef="Activity_08krcjm" />
     <bpmn:messageFlow id="Flow_0buxvjp" name="Информация о завершении работ над инцидетом" sourceRef="Activity_1o0dzlo" targetRef="Participant_01axcw4" />
     <bpmn:messageFlow id="Flow_0bxm3vg" name="Подтверждение устранения причины возникновения инцидента" sourceRef="Participant_01axcw4" targetRef="Activity_0c7mtjl" />
+    <bpmn:messageFlow id="Flow_1bxl7y4" name="Информация о завершении работ над инцидетом" sourceRef="Activity_1msiz0z" targetRef="Participant_01axcw4" />
+    <bpmn:messageFlow id="Flow_1yierwr" name="Подтверждение устранения причины возникновения инцидента" sourceRef="Participant_01axcw4" targetRef="Activity_0u8a990" />
   </bpmn:collaboration>
   <bpmn:process id="Process_17nbgj0" isExecutable="true">
     <bpmn:laneSet id="LaneSet_0wbf3hi">
@@ -25,7 +27,6 @@
       <bpmn:lane id="Lane_100j3ba" name="Первая линия поддержки">
         <bpmn:flowNodeRef>Activity_0n0kcrp</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0g4h1iw</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_0qnc1pw</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_092m42z</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0g7i4ie</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0hcpce5</bpmn:flowNodeRef>
@@ -33,20 +34,21 @@
         <bpmn:flowNodeRef>Activity_0c7mtjl</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_10hdllv</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0e323h1</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_1bozmn6</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_050ar5p</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_05yn4ds</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_1gcjvus</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_08krcjm</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0jr7737</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_1vtee6l</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0odui08</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_1xviq1o</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0fgy2ve</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1msiz0z</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0u8a990</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_03opatn</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0qnc1pw</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1vtee6l</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1azu02o</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_05yn4ds</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_050ar5p</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1bozmn6</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:userTask id="Activity_0n0kcrp" name="Эскалировать инцидент  второй линии поддержки">
@@ -57,13 +59,6 @@
       <bpmn:outgoing>Flow_01cvj6h</bpmn:outgoing>
       <bpmn:messageEventDefinition id="MessageEventDefinition_1thsapb" />
     </bpmn:startEvent>
-    <bpmn:userTask id="Activity_0qnc1pw" name="Зарегистрировать инцидент в системе первичного учета">
-      <bpmn:incoming>Flow_01cvj6h</bpmn:incoming>
-      <bpmn:outgoing>Flow_016od8l</bpmn:outgoing>
-      <bpmn:dataOutputAssociation id="DataOutputAssociation_16pw07n">
-        <bpmn:targetRef>DataStoreReference_0cvqhrk</bpmn:targetRef>
-      </bpmn:dataOutputAssociation>
-    </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_170djc9" sourceRef="Activity_0n0kcrp" targetRef="Gateway_002jorr" />
     <bpmn:sequenceFlow id="Flow_0lu99m0" sourceRef="Activity_13ymv2h" targetRef="Activity_1msiz0z" />
     <bpmn:sequenceFlow id="Flow_0sa8mpl" sourceRef="Gateway_1gcjvus" targetRef="Activity_05yn4ds" />
@@ -127,18 +122,6 @@
       <bpmn:incoming>Flow_1840j6k</bpmn:incoming>
       <bpmn:outgoing>Flow_131675x</bpmn:outgoing>
     </bpmn:parallelGateway>
-    <bpmn:task id="Activity_1bozmn6" name="Определить категорию и приоритет инцидента">
-      <bpmn:incoming>Flow_0p4go2a</bpmn:incoming>
-      <bpmn:outgoing>Flow_1hyqpgc</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:task id="Activity_050ar5p" name="Определить отвестсвенного за следующий шаг">
-      <bpmn:incoming>Flow_0j54gwp</bpmn:incoming>
-      <bpmn:outgoing>Flow_1840j6k</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:task id="Activity_05yn4ds" name="Определить временные рамки решения инцидента">
-      <bpmn:incoming>Flow_0sa8mpl</bpmn:incoming>
-      <bpmn:outgoing>Flow_0bj515x</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:sequenceFlow id="Flow_0bj515x" sourceRef="Activity_05yn4ds" targetRef="Gateway_0e323h1" />
     <bpmn:sequenceFlow id="Flow_1hyqpgc" sourceRef="Activity_1bozmn6" targetRef="Gateway_0e323h1" />
     <bpmn:sequenceFlow id="Flow_1840j6k" sourceRef="Activity_050ar5p" targetRef="Gateway_0e323h1" />
@@ -156,13 +139,6 @@
     <bpmn:endEvent id="Event_0jr7737" name="Инцидент закрыт">
       <bpmn:incoming>Flow_1vecxvu</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:task id="Activity_1vtee6l" name="Изменить статус инцидента на &#34;Выполнен&#34;">
-      <bpmn:incoming>Flow_1y0xjj0</bpmn:incoming>
-      <bpmn:outgoing>Flow_1vecxvu</bpmn:outgoing>
-      <bpmn:dataOutputAssociation id="DataOutputAssociation_0t32lk8">
-        <bpmn:targetRef>DataStoreReference_0cvqhrk</bpmn:targetRef>
-      </bpmn:dataOutputAssociation>
-    </bpmn:task>
     <bpmn:exclusiveGateway id="Gateway_0odui08" name="Причина возникновения инцидент устранена?">
       <bpmn:incoming>Flow_12bwppk</bpmn:incoming>
       <bpmn:outgoing>Flow_1y0xjj0</bpmn:outgoing>
@@ -220,6 +196,9 @@
       <bpmn:incoming>Flow_0wpbpnz</bpmn:incoming>
       <bpmn:outgoing>Flow_0kdlaf4</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_1oxlhe8">
+        <bpmn:targetRef>DataObjectReference_1h5mrln</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_1ktdmm2">
         <bpmn:targetRef>DataStoreReference_0j94r2d</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
     </bpmn:userTask>
@@ -252,13 +231,6 @@
       <bpmn:outgoing>Flow_1vxmejc</bpmn:outgoing>
       <bpmn:outgoing>Flow_0aajxjl</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:task id="Activity_1azu02o" name="Изменить статус инцидента на &#34;Выполнен&#34;">
-      <bpmn:incoming>Flow_1vxmejc</bpmn:incoming>
-      <bpmn:outgoing>Flow_0cty8jh</bpmn:outgoing>
-      <bpmn:dataOutputAssociation id="DataOutputAssociation_0fnthnx">
-        <bpmn:targetRef>DataStoreReference_0j94r2d</bpmn:targetRef>
-      </bpmn:dataOutputAssociation>
-    </bpmn:task>
     <bpmn:sequenceFlow id="Flow_0cty8jh" sourceRef="Activity_1azu02o" targetRef="Event_0fgy2ve" />
     <bpmn:sequenceFlow id="Flow_1mq8rcg" sourceRef="Activity_1msiz0z" targetRef="Activity_0u8a990" />
     <bpmn:sequenceFlow id="Flow_0w2442l" sourceRef="Activity_0u8a990" targetRef="Gateway_03opatn" />
@@ -267,8 +239,41 @@
       <bpmn:incoming>Flow_1pkhen5</bpmn:incoming>
       <bpmn:outgoing>Flow_0wpbpnz</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:userTask id="Activity_0qnc1pw" name="Зарегистрировать инцидент в системе первичного учета">
+      <bpmn:incoming>Flow_01cvj6h</bpmn:incoming>
+      <bpmn:outgoing>Flow_016od8l</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_16pw07n">
+        <bpmn:targetRef>DataStoreReference_0cvqhrk</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:userTask>
     <bpmn:dataObjectReference id="DataObjectReference_1h5mrln" name="Результат выполнения работы над инцидетом" dataObjectRef="DataObject_1l4euup" />
     <bpmn:dataObject id="DataObject_1l4euup" />
+    <bpmn:userTask id="Activity_1vtee6l" name="Изменить статус инцидента на &#34;Выполнен&#34;">
+      <bpmn:incoming>Flow_1y0xjj0</bpmn:incoming>
+      <bpmn:outgoing>Flow_1vecxvu</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_0t32lk8">
+        <bpmn:targetRef>DataStoreReference_0cvqhrk</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_1azu02o" name="Изменить статус инцидента на &#34;Выполнен&#34;">
+      <bpmn:incoming>Flow_1vxmejc</bpmn:incoming>
+      <bpmn:outgoing>Flow_0cty8jh</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_0fnthnx">
+        <bpmn:targetRef>DataStoreReference_0j94r2d</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_05yn4ds" name="Определить временные рамки решения инцидента">
+      <bpmn:incoming>Flow_0sa8mpl</bpmn:incoming>
+      <bpmn:outgoing>Flow_0bj515x</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_050ar5p" name="Определить отвестсвенного за следующий шаг">
+      <bpmn:incoming>Flow_0j54gwp</bpmn:incoming>
+      <bpmn:outgoing>Flow_1840j6k</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_1bozmn6" name="Определить категорию и приоритет инцидента">
+      <bpmn:incoming>Flow_0p4go2a</bpmn:incoming>
+      <bpmn:outgoing>Flow_1hyqpgc</bpmn:outgoing>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_04ggkww">
@@ -332,18 +337,6 @@
       <bpmndi:BPMNShape id="Gateway_08whzyi_di" bpmnElement="Gateway_0e323h1">
         <dc:Bounds x="1705" y="315" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1bozmn6_di" bpmnElement="Activity_1bozmn6">
-        <dc:Bounds x="1580" y="390" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_050ar5p_di" bpmnElement="Activity_050ar5p">
-        <dc:Bounds x="1580" y="300" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_05yn4ds_di" bpmnElement="Activity_05yn4ds">
-        <dc:Bounds x="1580" y="210" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1rvw5e7_di" bpmnElement="Gateway_1gcjvus">
         <dc:Bounds x="1505" y="315" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -355,10 +348,6 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="1326" y="275" width="89" height="14" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_1qjvcue" bpmnElement="Activity_1vtee6l">
-        <dc:Bounds x="1220" y="210" width="100" height="80" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_0gjtetv" bpmnElement="Gateway_0odui08" isMarkerVisible="true">
         <dc:Bounds x="1075" y="225" width="50" height="50" />
@@ -429,10 +418,6 @@
           <dc:Bounds x="2361" y="251.5" width="77" height="53" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_0fyzr5a" bpmnElement="Activity_1azu02o">
-        <dc:Bounds x="2470" y="300" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_08jpmy9_di" bpmnElement="Activity_0h5qwbl">
         <dc:Bounds x="640" y="540" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -441,6 +426,21 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="769" y="692" width="63" height="53" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1pr6fga_di" bpmnElement="Activity_1vtee6l">
+        <dc:Bounds x="1220" y="210" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0nyt213_di" bpmnElement="Activity_1azu02o">
+        <dc:Bounds x="2470" y="300" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0w4vcg6_di" bpmnElement="Activity_05yn4ds">
+        <dc:Bounds x="1580" y="210" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1cawpa3_di" bpmnElement="Activity_050ar5p">
+        <dc:Bounds x="1580" y="300" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0uz49pb_di" bpmnElement="Activity_1bozmn6">
+        <dc:Bounds x="1580" y="390" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_170djc9_di" bpmnElement="Flow_170djc9">
         <di:waypoint x="2010" y="340" />
@@ -692,8 +692,8 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataOutputAssociation_1oxlhe8_di" bpmnElement="DataOutputAssociation_1oxlhe8">
         <di:waypoint x="840" y="620" />
-        <di:waypoint x="840" y="820" />
-        <di:waypoint x="1075" y="820" />
+        <di:waypoint x="840" y="660" />
+        <di:waypoint x="818" y="660" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0buxvjp_di" bpmnElement="Flow_0buxvjp">
         <di:waypoint x="860" y="210" />
@@ -708,6 +708,25 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="989" y="115" width="82" height="66" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1bxl7y4_di" bpmnElement="Flow_1bxl7y4">
+        <di:waypoint x="2150" y="300" />
+        <di:waypoint x="2150" y="110" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2061" y="121" width="77" height="53" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1yierwr_di" bpmnElement="Flow_1yierwr">
+        <di:waypoint x="2280" y="110" />
+        <di:waypoint x="2280" y="300" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2289" y="115" width="82" height="66" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_1ktdmm2_di" bpmnElement="DataOutputAssociation_1ktdmm2">
+        <di:waypoint x="840" y="620" />
+        <di:waypoint x="840" y="805" />
+        <di:waypoint x="1075" y="805" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
