@@ -155,7 +155,7 @@
       <bpmn:incoming>Flow_170djc9</bpmn:incoming>
       <bpmn:outgoing>Flow_1hf9bpc</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:userTask id="Activity_00kdu9m" name="Определить причину возникновения инцидента">
+    <bpmn:userTask id="Activity_00kdu9m" name="Провести  диагностику">
       <bpmn:incoming>Flow_1hf9bpc</bpmn:incoming>
       <bpmn:outgoing>Flow_03grgy2</bpmn:outgoing>
       <bpmn:property id="Property_11u2ned" name="__targetRef_placeholder" />
@@ -177,7 +177,7 @@
       <bpmn:incoming>Flow_1f2tg7j</bpmn:incoming>
       <bpmn:outgoing>Flow_04skcrn</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Activity_1x9wlv7" name="Эскалировать инцидент отсетственному сотруднику">
+    <bpmn:userTask id="Activity_1x9wlv7" name="Эскалировать инцидент ответственному сотруднику">
       <bpmn:incoming>Flow_0omsm6d</bpmn:incoming>
       <bpmn:outgoing>Flow_078f82y</bpmn:outgoing>
     </bpmn:userTask>
@@ -636,12 +636,12 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Participant_0bfzxlh_di" bpmnElement="Participant_01axcw4" isHorizontal="true">
-        <dc:Bounds x="170" y="50" width="2520" height="60" />
+        <dc:Bounds x="170" y="50" width="2530" height="60" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="DataOutputAssociation_0g2ovfl_di" bpmnElement="DataOutputAssociation_0g2ovfl">
         <di:waypoint x="1830" y="380" />
         <di:waypoint x="1830" y="790" />
-        <di:waypoint x="1125" y="800" />
+        <di:waypoint x="1125" y="790" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0n261y6_di" bpmnElement="Flow_0n261y6">
         <di:waypoint x="1430" y="110" />
